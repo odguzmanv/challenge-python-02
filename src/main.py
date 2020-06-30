@@ -6,6 +6,27 @@ SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
 
 def generate_password():
     # Start coding here
+     caracteres = str(SYMBOLS) + string.ascii_letters + string.digits
+    longitud = random.randint(8,16)
+    minusculas = random.randint(1,4);
+    mayusculas = random.randint(1,4);
+    numeros = random.randint(1,4);
+    simbolos = random.randint(1,4);
+
+   
+
+    while True:
+        password = ("").join(random.choice(caracteres) for index in range(longitud))
+        if(sum(caracter.islower() for caracter in password) >= minusculas
+            and sum(caracter.isupper() for caracter in password) >= mayusculas
+            and sum(caracter.isdigit() for caracter in password) >= numeros):
+            for caracter in password:
+                    if caracter in SYMBOLS:
+                        False
+                    else:
+                        True
+            break
+    return password
 
 
 def validate(password):
